@@ -1,0 +1,317 @@
+2. Implement angular component having name 'color'. Accept color name as an input from user, display 'submit button and on clicking on it display "welcome to angular" message by applying the input color as a CSS. 
+
+color.component.css
+-----
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#container {
+    display: flex;
+    justify-content: center;   
+    margin-top: 10%; 
+}
+#container input {
+    font-size: 20px;
+    padding: 10px 30px;
+}
+#container button {
+    margin-left: 30px;
+    padding: 0px 20px;
+}
+p {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+color.component.html
+--------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <input type="text" #color placeholder="Enter the color name" />
+        <button type="submit" (click)="getColor(color.value)">Submit</button>
+    </div>
+    <p [style.color]="setColor">{{message}}</p>
+</body>
+</html>
+------------------------------------------------------------------------------
+3.Create three angular component comp1, comp2, comp3. Display the three menu 'comp1', 'comp2','comp3' using navbar. Implement angular routing in such a way that when a user clicks on comp1 menu In comp1 message should be displayed.
+app-routing.modules.ts
+----------------------
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { Comp1Component } from './comp1/comp1.component';
+import { Comp2Component } from './comp2/comp2.component';
+import { Comp3Component } from './comp3/comp3.component';
+
+const routes: Routes = [
+  { path: "comp1", component: Comp1Component},
+  { path: "comp2", component: Comp2Component},
+  { path: "comp3", component: Comp3Component}
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+app.component.css
+-----------------
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#navbar {
+    margin-top: 30px;
+}
+#navbar ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#navbar li {
+    list-style: none;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+#navbar li:hover {
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+    border-radius: 20px;
+}
+
+app.component.html
+------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <nav id="navbar">
+    <ul>
+      <li routerLink="comp1" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >Comp1</li>
+      <li routerLink="comp2" routerLinkActive="active">Comp2</li>
+      <li routerLink="comp3" routerLinkActive="active">Comp3</li>
+    </ul>
+  </nav>
+  <router-outlet></router-outlet>
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------
+4.  Create angular components having name Bombay, Delhi, Punjab, Chennai. Display all the four components inside the app component. Inside Bombay component display all famous places of Bombay in tabular format. In all other component display the information about the corresponding city.
+
+bombay.component.html || chennai.component.html || delhi.componet.html || punjab.component.html
+----------------------
+<div class="container mt-3 mb-3">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Bombay</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Juhu Beach</td>
+            </tr>
+            <tr>
+                <td>Gateway of India</td>
+            </tr>
+            <tr><td>Chor Bazaar</td></tr>
+        </tbody>
+    </table>
+</div>
+-------------------------------------------------------------------------------------------------
+5.  Create an angular component called 'technology'. Display all the technology in the table which you know with its uses. Call technology component from app component.
+technology.component.html
+-----------------------
+<div id="table">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Technology</th>
+                <th scope="col">Uses</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Artificial Intellience</th>
+                <td>Artificial Intelligence, which is also popularly known as AI.</td>
+            </tr>
+            <tr>
+                <th scope="row">Data Science</th>
+                <td>Data Science is one such thing that leads the IT industry.</td>
+            </tr>
+            <tr>
+                <th scope="row">Angular and React</th>
+                <td>Angular and React, which are also commonly known as Angular JS and React JS</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+----------------------------------------------------------------------------------------
+6. Create an angular component with the name 'treks'. Display nearby trek information in the trek component. Use CSS classes and bootstrap table.
+
+treaks.component.html
+----------------------
+<div id="treks">
+    <p>{{name}}</p>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Location</th>
+            <th scope="col">Information</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Matheran </th>
+            <td>Matheran Trekking Pune is located at a distance of 125 km from Pune that offers the most beautiful view of the landscape. Most of the trekking lovers come to this lovely place to reach the Garbett Point and experience the best of their itinerary.</td>
+          </tr>
+          <tr>
+            <th>Vasota Fort Trek</th>
+            <td>Vasota Fort is located at an altitude of 1171 m near Bamnoli village in Satara district. </td>
+          </tr>
+          <tr>
+            <th>Lohagad Trek</th>
+            <td>Located near to Pune city in Lohagadwadi Village, The Lohagad trek is one of the most beautiful treks where surroundings view is highly impressive. </td>
+          </tr>
+          <tr>
+            <th>Raigad Fort Trek</th>
+            <td>Located at a distance of 54 km from Pune, Raigad Trek is the easiest trek in Pune. </td>
+          </tr>
+          <tr>
+            <th>Kalsubai Peak Trek</th>
+            <td>Located at a distance of 180 km from Pune, Kalsubai Peak Trek can be done between June to September. </td>
+          </tr>
+          </tbody>
+      </table>
+</div>
+
+-----------------------------------------------------------------------------------------------------------------------------
+7. Create an angular component with the name 'hospital' which are having attributes id, name, location and status. Status can be available or unavailable. Display all available hospitals.
+hospital.component.html
+-----------------------
+<div id="tables" [hidden]="">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Location</th>
+                <th scope="col">Name</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of data">
+            <ng-container *ngIf="item.status=='Available'">
+                <tr>
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.location}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.status}}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
+--------------------------------------------------------------------------------------------
+8. Create angular "buttons" component. Display all available bootstrap buttons, handle click events and display which button has been clicked. 
+
+app.component.html
+--------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <button type="button" class="btn btn-primary" #data1 name="Primary" (click)="getData(data1.name)">Primary</button>
+    <button type="button" class="btn btn-secondary" #data2 name="Secondary" (click)="getData(data2.name)">Secondary</button>
+    <button type="button" class="btn btn-success" #data3 name="Success" (click)="getData(data3.name)">Success</button>
+    <button type="button" class="btn btn-danger" #data4 name="Danger" (click)="getData(data4.name)">Danger</button>
+    <button type="button" class="btn btn-warning" #data5 name="Warning" (click)="getData(data5.name)">Warning</button>
+    <button type="button" class="btn btn-info" #data6 name="Info" (click)="getData(data6.name)">Info</button>
+    <button type="button" class="btn btn-light" #data7 name="Light" (click)="getData(data7.name)">Light</button>
+    <button type="button" class="btn btn-dark" #data8 name="Dark"(click)="getData(data8                                                                                                                               .name)">Dark</button>
+  </div>
+  <div class="msg">
+    {{message}}
+  </div>
+
+  <!-- js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
+-------------------------------------------------------------------------------------------------
+9. Create angular component 'myform'. Display login form with submit button. perform validation of user input i.e username should be of min 5 character and password should of min 8 character.
+
+app.component.html
+--------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>Form Validations</title>
+</head>
+<body>
+  <form [formGroup]="registrationForm" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Username</label>
+      <input type="email" 
+        class="form-control" 
+        id="exampleInputEmail1" 
+        name="username" 
+        formControlName="username"
+      />
+      <div *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched" class="text-danger">
+        <small>**Username is required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="password" formControlName="password">
+    </div>
+      <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched" class="text-danger">
+        <small *ngIf="f['password'].errors && f['password'].errors['required']">**Password is required</small>
+        <small *ngIf="f['password'].errors && f['password'].errors['minlength']">**Password Length Should be 8 characters</small>
+      </div>
+    <button type="submit" class="btn btn-primary mt-3" [disabled]="registrationForm.invalid">Submit</button>
+  </form>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> 
+</body>
+</html>
+
+

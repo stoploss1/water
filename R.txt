@@ -1,0 +1,159 @@
+1.Implement react js states
+ 
+import './App.css';
+import { useState } from 'react';
+
+function App() {
+  const [data,setData]=useState("james");
+  function updateData(){
+    setData("james")
+  }
+  return (
+    <div class="App">
+      <h1>States in react</h1>
+      <h2>{data}</h2>
+      <button onClick={updateData}>Update State</button>
+    </div>
+  );
+}
+
+export default App;
+
+---------------------------------------------------------------------------------------------------------
+2.Create a react js component which will display all available npm commands.
+
+1.create component folder. in component folder create command.js.
+  command.js
+ -------------  
+import React from 'react';
+function Command() {
+  return (
+    
+    <div class="m-5">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"/>
+      <h1>npm Commands</h1>
+      <table class="table table-striped table-info">
+  <tbody>
+    <tr>
+      <th>npm access</th>
+    </tr>
+    <tr>
+      <th>npm adduser</th>
+    </tr>
+    <tr>
+      <th>npm audit</th>
+    </tr>
+    <tr>
+      <th>npm bundle</th>
+    </tr>
+
+    <tr>
+      <th>npm install</th>
+    </tr>
+    <tr>
+      <th>npm logout</th>
+    </tr>
+    <tr>
+      <th>npm profile</th>
+    </tr>
+    </tbody>
+    </table>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    </div>
+    
+  )
+}
+
+export default Command
+
+2.App.js
+---------
+import './App.css';
+import Command from './component/Command';
+function App() {
+  return (
+    <div className="App">
+      <Command/>
+    </div>
+  );
+}
+
+export default App;
+------------------------------------------------------------------------------------------------------------
+3. Create react js project and display your profile information.
+App.Css
+-------
+.card{
+  width:18rem;
+}
+img{
+  width:300px;
+  height:300px;
+  border-radius: 50%;
+}
+div{
+  background-color:rgb(132, 50, 50);
+}
+
+App.js
+-------
+import './App.css';
+function App() {
+  return (
+    <div className="m-5 d-flex justify-content-center">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"></link>
+      <div class="card">
+        <img src="/image/james.jpg" class="card-img-top" alt="..."/>
+    <div class="card-body">
+      <h5 class="card-title text-center">Profile</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><h5>Name:</h5> James adam lynn</li>
+      <li class="list-group-item"><h5>College:</h5>Hoggward college ,mexico</li>
+      <li class="list-group-item"><h5>Education: </h5>Msc Computer Science</li>
+      <li class="list-group-item"><h5>Enrollment no:</h5> 1101</li>
+      <li class="list-group-item"><h5>email:</h5> jamesbond007@gmail.com</li>
+    </ul>
+  </div>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </div>
+  );
+}
+export default App;
+--------------------------------------------------------------------------------------------------------------
+4. Implement hotel manager react JS program which will print hotel list by using react props.
+ Hotel.js
+---------
+import React from 'react'
+
+function Hotel(props) {
+  return (
+    <div className="d-flex justify-content-center mt-5">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"></link>
+        <ol className="text-light fs-4">
+      {props.hotel_names.map((data)=>{
+        return <li>{data}</li>
+      })}
+      </ol>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    </div>
+  )
+}
+
+export default Hotel
+
+App.js
+--------
+import './App.css';
+import Hotel from './Hotel';
+function App() {
+  return (
+    <div>
+      <Hotel hotel_names={['Ritz-Carlton Hotel','Marriott','Hyatt','St Regis Hotels','Rosewood Hotels & Resorts','Aman Resorts','Four Seasons']}/>
+    </div>
+  );
+}
+
+export default App;
+
+
